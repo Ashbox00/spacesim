@@ -1,5 +1,10 @@
 #include <raylib.h>
 #include <raymath.h>
+#include <iostream>
+
+#include "sphere.h"
+
+#include "downloader.hpp"
 
 #include "json_parser.hpp"
 
@@ -19,12 +24,13 @@ string readFileAsString(const string &filename)
 
 int main()
 {
-    string json = readFileAsString("./test.json");
-    Jparser(json);
-
-
     InitWindow(640, 480, "Space Sim");
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
+    std::vector<Sphere> spheres;
+
+    spheres.push_back(Sphere(0, 0, 0));
+    spheres.push_back(Sphere(3, 1, 1));
+    spheres.push_back(Sphere(5, 4, 4));
 
     Camera3D camera = {
         .position = Vector3{0, 0, -5},
@@ -45,7 +51,12 @@ int main()
             BeginMode3D(camera);
             {
                 // DrawSphere(Vector3Zero(), 3, GREEN);
-                DrawSphereEx(Vector3Zero(), 3, 100, 100, YELLOW);
+                // DrawSphereEx(Vector3Zero(), 3, 100, 100, YELLOW);
+
+                for (auto &s : spheres)
+                {
+                    DrawSphereEx(s.getCoords(), s.getRadius(), 100, 100, YELLOW);
+                }
             }
             EndMode3D();
 
