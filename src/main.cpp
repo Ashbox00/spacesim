@@ -22,14 +22,6 @@ int last_state = 0;
 int current_state = 0;
 constexpr double STEP_TIME = 1.0f;
 
-std::string url = "https://ssd.jpl.nasa.gov/api/horizons.api?format=json"
-                  "&COMMAND='399'"
-                  "&EPHEM_TYPE=VECTORS"
-                  "&CENTER='500@0'"
-                  "&START_TIME='2025-04-12'"
-                  "&STOP_TIME='2025-04-13'"
-                  "&STEP_SIZE='1 d'";
-
 int main()
 {
     srand(time(NULL));
@@ -54,6 +46,9 @@ int main()
 
     Jparser(ss.str());
 
+    int last_state = 0;
+    int current_state = 0;
+
     states[current_state] = initialState;
 
     for (int i = 1; i < NUM_STATES; i++)
@@ -67,6 +62,8 @@ int main()
 
     Mesh circleMesh = GenMeshSphere(1.0f, 100, 100);
     Model circleModel = LoadModelFromMesh(circleMesh);
+
+    double totalTime = 0;
 
     while (!WindowShouldClose())
     {
@@ -104,6 +101,8 @@ int main()
 
             last_state = current_state;
         }
+
+        totalTime += GetFrameTime();
     }
 
     UnloadModel(circleModel); // Also unloads mesh
