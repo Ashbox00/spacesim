@@ -1,37 +1,84 @@
-#include <string>
+#include "planet.h"
 
-struct PlanetInfo {
-    std::string name;
-    double mass_kg; 
-    double radius_km;
-};
-
-
-PlanetInfo sun = {
-    "Sun",
-    1.989e30,
-    695700.0
-};
-
-PlanetInfo mercury = {
-    "Mercury",
-    3.301e23,
-    2439.7
-};
-PlanetInfo venus = {
-    "Venus",
-    4.867e24,
-    6051.8
-};
-
-PlanetInfo earth = {
-    "Earth",
-    5.972e24,
-    6371.0
-};
-
-PlanetInfo mars = {
-    "Mars",
-    6.417e23,
-    3389.5
+Planet planets[NUM_PLANETS] = {
+    Planet{
+        .name = "Sun",
+        .position = Vector3Zero(),
+        .velocity = Vector3Zero(),
+        .mass_kg = 1.989e30,
+        .radius_km = 695700.0,
+        .color = YELLOW,
+    },
+    Planet{
+        .name = "Mercury",
+        .position = Vector3Zero(),
+        .velocity = Vector3Zero(),
+        .mass_kg = 3.301e23,
+        .radius_km = 2439.7,
+        .color = RAYWHITE,
+    },
+    Planet{
+        .name = "Venus",
+        .position = Vector3Zero(),
+        .velocity = Vector3Zero(),
+        .mass_kg = 4.867e24,
+        .radius_km = 6051.8,
+        .color = RED,
+    },
+    Planet{
+        .name = "Earth",
+        .position = Vector3Zero(),
+        .velocity = Vector3Zero(),
+        .mass_kg = 5.972e24,
+        .radius_km = 6371.0,
+        .color = GREEN,
+    },
+    Planet{
+        .name = "Mars",
+        .position = Vector3Zero(),
+        .velocity = Vector3Zero(),
+        .mass_kg = 6.417e23,
+        .radius_km = 3389.5,
+        .color = ORANGE,
+    },
+    Planet{
+        .name = "Jupiter",
+        .position = Vector3Zero(),
+        .velocity = Vector3Zero(),
+        .mass_kg = 1.898e27,
+        .radius_km = 69911.0,
+        .color = BROWN,
+    },
+    Planet{
+        .name = "Saturn",
+        .position = Vector3Zero(),
+        .velocity = Vector3Zero(),
+        .mass_kg = 5.68e26,
+        .radius_km = 60268.0,
+        .color = YELLOW,
+    },
+    Planet{
+        .name = "Uranus",
+        .position = Vector3Zero(),
+        .velocity = Vector3Zero(),
+        .mass_kg = 8.682e25,
+        .radius_km = 51118.0,
+        .color = BLUE,
+    },
+    Planet{
+        .name = "Neptune",
+        .position = Vector3Zero(),
+        .velocity = Vector3Zero(),
+        .mass_kg = 1.024e26,
+        .radius_km = 24764.0,
+        .color = PURPLE,
+    },
+    Planet{
+        .name = "Pluto",
+        .position = Vector3Zero(),
+        .velocity = Vector3Zero(),
+        .mass_kg = 1.31e22,
+        .radius_km = 2370.0,
+        .color = GOLD,
+    },
 };
