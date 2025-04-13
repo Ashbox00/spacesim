@@ -7,5 +7,19 @@
 		"**/.DS_Store": true,
 		"**/*.o": true,
 		"**/*.exe": true,
+	},
+	"files.associations": {
+		"string": "cpp",
+		"algorithm": "cpp",
+		"iterator": "cpp",
+		"memory": "cpp",
+		"utility": "cpp",
+		"array": "cpp",
+		"optional": "cpp",
+		"type_traits": "cpp",
+		"cstddef": "cpp",
+		"exception": "cpp",
+		"stdexcept": "cpp",
+		"cstdint": "cpp"
 	}
 }
