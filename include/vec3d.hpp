@@ -52,7 +52,7 @@ public:
         return *this;
     }
 
-    inline vec3d operator*(double scale)
+    inline vec3d operator*(double scale) const
     {
         return vec3d(x * scale, y * scale, z * scale);
     }
@@ -78,7 +78,7 @@ public:
         return *this;
     }
 
-    inline operator Vector3() const
+    inline explicit operator Vector3() const
     {
         return Vector3{
             .x = (float)x,
@@ -89,6 +89,10 @@ public:
 
     inline vec3d invert()
     {
+        if (x == 0.0)
+        {
+            printf("Sadge\n");
+        }
         return vec3d(1.0 / x, 1.0 / y, 1.0 / z);
     }
 
