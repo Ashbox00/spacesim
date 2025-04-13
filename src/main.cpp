@@ -2,7 +2,7 @@
 #include <raymath.h>
 #include <iostream>
 
-#include "sphere.h"
+#include "planet.h"
 
 #include "downloader.hpp"
 
@@ -15,7 +15,7 @@
 
 using namespace std;
 
-static array<Planet, 10> planets = {
+static Planet planets[] = {
     Planet{
         .name = "Sun",
         .position = Vector3Zero(),
@@ -88,14 +88,6 @@ static array<Planet, 10> planets = {
     },
 };
 
-string readFileAsString(const string &filename)
-{
-    ifstream inFile(filename);
-    ostringstream ss;
-    ss << inFile.rdbuf();
-    return ss.str();
-}
-
 int main()
 {
     InitWindow(640, 480, "Space Sim");
@@ -128,9 +120,6 @@ int main()
 
             BeginMode3D(camera);
             {
-                // DrawSphere(Vector3Zero(), 3, GREEN);
-                // DrawSphereEx(Vector3Zero(), 3, 100, 100, YELLOW);
-
                 for (auto &p : planets)
                 {
                     DrawSphereEx(p.position, p.radius_km / 10000, 100, 100, YELLOW);
