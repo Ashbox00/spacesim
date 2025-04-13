@@ -1,16 +1,14 @@
 #include <raylib.h>
 #include <raymath.h>
 #include "sphere.h"
-#include <iostream>
 
 int main()
 {
     InitWindow(640, 480, "Space Sim");
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
-    char inputQ;
-    Sphere s;
-    
-    std::vector<float> coords;
+    std::vector<Sphere> spheres;
+
+    spheres.push_back(Sphere(0, 0, 0));
 
     Camera3D camera = {
         .position = Vector3{0, 0, -5},
@@ -32,20 +30,11 @@ int main()
             {
                 // DrawSphere(Vector3Zero(), 3, GREEN);
                 //DrawSphereEx(Vector3Zero(), 3, 100, 100, YELLOW);
-                DrawSphereEx(s.getCoords(), 3, 100, 100 ,YELLOW);
 
-                while (true)
+                for (auto& s : spheres)
                 {
-                    std::cout << "q to quit: ";
-                    std::cin >> inputQ;
-
-                    if(inputQ == 'q')
-                    {
-                        break;
-                    }
-
                     DrawSphereEx(s.getCoords(), s.getRadius(), 100, 100, YELLOW);
-                };
+                }
             }
             EndMode3D();
 
