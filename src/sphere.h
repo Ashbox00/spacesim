@@ -6,6 +6,8 @@
 #include <raymath.h>
 #include <vector>
 
+//insert header files from gage
+
 class Sphere 
 {
 public:
@@ -72,6 +74,16 @@ public:
     void setRadius(float rad)
     {
         radius = rad;
+    }
+
+    float getMass()
+    {
+        return mass;
+    }
+
+    void setMass(float mass)
+    {
+        mass = mass;
     }
 
 private:
