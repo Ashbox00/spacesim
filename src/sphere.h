@@ -15,8 +15,9 @@ public:
         x = 0;
         y = 0;
         z = 0;
+        radius = 1;
     };
-
+/*
     Sphere(double xVel, double yVel, double zVel)
     {
         vel = Vector3
@@ -26,7 +27,7 @@ public:
             z = zVel,
         };
     }
-
+*/
     Sphere(float xCoords, float yCoords, float zCoords) 
     {
         vec = Vector3
@@ -36,6 +37,7 @@ public:
             y = yCoords,
             z = zCoords,
         };
+        radius = 1;
     };
 
     Vector3 getCoords()
