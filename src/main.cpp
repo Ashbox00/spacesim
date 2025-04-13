@@ -20,7 +20,7 @@ using namespace std;
 PlanetStates states[NUM_STATES] = {};
 int last_state = 0;
 int current_state = 0;
-constexpr double STEP_TIME = 0.0001f;
+constexpr double STEP_TIME = 0.1f;
 
 std::string url = "https://ssd.jpl.nasa.gov/api/horizons.api?format=json"
                   "&COMMAND='399'"
@@ -70,9 +70,9 @@ int main()
 
     while (!WindowShouldClose())
     {
-        current_state = 0; //(int)((uint64_t)(floor(GetTime())) % NUM_STATES);
+        current_state = (int)((uint64_t)(floor(10 * GetTime())) % NUM_STATES);
 
-        UpdateCamera(&camera, CAMERA_FIRST_PERSON);
+        UpdateCamera(&camera, CAMERA_THIRD_PERSON);
         SetMousePosition(GetScreenWidth() / 2, GetScreenHeight() / 2);
 
         BeginDrawing();
@@ -86,7 +86,7 @@ int main()
                     // if (&p == &states[current_state].planets[0])
                     //     continue;
 
-                    DrawModel(circleModel, (Vector3)(p.position / 1e7), p.radius_km / 1000, p.color);
+                    DrawModel(circleModel, (Vector3)(p.position / 1e6), p.radius_km / 500, p.color);
                 }
             }
             EndMode3D();

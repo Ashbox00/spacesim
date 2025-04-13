@@ -20,13 +20,13 @@ void Jparser(const string &readBuffer)
             for (auto vector : vectors)
             {
                 // auto coords = vectors[0];
-                double x = stod(string(vector["X"])) * 149597870.7;
-                double y = stod(string(vector["Y"])) * 149597870.7;
-                double z = stod(string(vector["Z"])) * 149597870.7;
+                double x = stod(string(vector["X"]));
+                double y = stod(string(vector["Y"]));
+                double z = stod(string(vector["Z"]));
 
-                double vx_km = stod(string(vector["VX"])) * 149597870.7 / 24 / 60 / 60;
-                double vy_km = stod(string(vector["VY"])) * 149597870.7 / 24 / 60 / 60;
-                double vz_km = stod(string(vector["VZ"])) * 149597870.7 / 24 / 60 / 60;
+                double vx_km = stod(string(vector["VX"]));
+                double vy_km = stod(string(vector["VY"]));
+                double vz_km = stod(string(vector["VZ"]));
 
                 std::string target_name = vector["target"];
                 for (int i = 0; i < NUM_PLANETS; i++)
