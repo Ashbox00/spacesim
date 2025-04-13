@@ -62,10 +62,19 @@ public:
         vel.z = zVel;
     }
 
+    float getRadius()
+    {
+        return radius;
+    }
+
+    void setRadius(float rad)
+    {
+        radius = rad;
+    }
+
 private:
     float x, y, z, mass, radius;
     Vector3 vel, vec;
-    std::vector<float> coords;
 };
 
 #endif
