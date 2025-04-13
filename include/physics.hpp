@@ -2,6 +2,6 @@
 
 #include "planet.h"
 
-void updatePlanets(double timesec);
+// void updatePlanets(double timesec);
 
-Planet satelliteStep(Planet &satellite, double timesec);
+Planet satelliteStep(const PlanetStates &state, const Planet &satellite, double timesec);

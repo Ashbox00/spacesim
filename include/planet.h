@@ -17,4 +17,10 @@ struct Planet
 };
 
 #define NUM_PLANETS (10)
-extern Planet planets[NUM_PLANETS];
+
+struct PlanetStates
+{
+    Planet planets[NUM_PLANETS];
+};
+
+extern PlanetStates initialState;
