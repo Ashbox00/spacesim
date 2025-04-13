@@ -27,8 +27,8 @@ int main()
     InitWindow(640, 480, "Space Sim");
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
     std::vector<Sphere> spheres;
-
-    spheres.push_back(Sphere(0, 0, 0));
+    spheres.push_back(PlanetToSphere(sun, {0,0,0}));
+    
     spheres.push_back(Sphere(3, 1, 1));
     spheres.push_back(Sphere(5, 4, 4));
 
