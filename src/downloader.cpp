@@ -14,7 +14,7 @@ std::string download(const std::string &url)
     std::string curl_cmd = "curl";
 #endif
 
-    std::string cmd = std::format("{} -L {} -o downloaded_file", curl_cmd, url);
+    std::string cmd = std::format("{} -L \"{}\" -o downloaded_file", curl_cmd, url);
     int status = system(cmd.c_str());
     if (status != 0)
     {
