@@ -20,3 +20,165 @@
       ]
     }
   }
+
+
+  {
+    "signature": {
+      "source": "NASA/JPL Horizons API",
+      "version": "1.2"
+    },
+    "result": {
+      "vector": [
+        {
+          "target": "Mars",
+          "center": "Sun",
+          "ref_frame": "ICRF",
+          "X": "-1.390715926610000E+00",
+          "Y": "1.049189287500000E+00",
+          "Z": "5.337118000000000E-02",
+          "VX": "-9.234567890000000E-03",
+          "VY": "-1.234567890000000E-02",
+          "VZ": "-2.345678900000000E-04",
+          "datetime": "2025-Apr-12 00:00:00"
+        }
+      ]
+    }
+  }
+
+
+  {
+    "signature": {
+      "source": "NASA/JPL Horizons API",
+      "version": "1.2"
+    },
+    "result": {
+      "vector": [
+        {
+          "target": "Saturn",
+          "center": "Sun",
+          "ref_frame": "ICRF",
+          "X": "9.58201720",
+          "Y": "-3.12345678",
+          "Z": "-0.45678901",
+          "VX": "0.00012345",
+          "VY": "0.00067890",
+          "VZ": "-0.00023456",
+          "datetime": "2025-Apr-12 00:00:00"
+        }
+      ]
+    }
+  }
+
+  {
+    "signature": {
+      "source": "NASA/JPL Horizons API",
+      "version": "1.2"
+    },
+    "result": {
+      "vector": [
+        {
+          "target": "Neptune",
+          "center": "Sun",
+          "ref_frame": "ICRF",
+          "X": "29.958123456789",
+          "Y": "-3.123456789012",
+          "Z": "-0.456789012345",
+          "VX": "0.000123456789",
+          "VY": "0.000678901234",
+          "VZ": "-0.000234567890",
+          "datetime": "2025-Apr-12 00:00:00"
+        }
+      ]
+    }
+  }
+
+  {
+    "signature": {
+      "source": "NASA/JPL Horizons API",
+      "version": "1.2"
+    },
+    "result": {
+      "vector": [
+        {
+          "target": "Mercury",
+          "center": "Sun",
+          "ref_frame": "ICRF",
+          "X": "0.38709893",
+          "Y": "0.00000000",
+          "Z": "0.00000000",
+          "VX": "0.00000000",
+          "VY": "0.04736200",
+          "VZ": "0.00000000",
+          "datetime": "2025-Apr-12 00:00:00"
+        }
+      ]
+    }
+  
+    {
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      },
+      "result": {
+        "vector": [
+          {
+            "target": "Venus",
+            "center": "Sun",
+            "ref_frame": "ICRF",
+            "X": "-0.719165",
+            "Y": "0.032345",
+            "Z": "0.041234",
+            "VX": "-0.000987",
+            "VY": "-0.020123",
+            "VZ": "-0.000456",
+            "datetime": "2025-Apr-12 00:00:00"
+          }
+        ]
+      }
+    }
+
+    {
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      },
+      "result": {
+        "vector": [
+          {
+            "target": "Uranus",
+            "center": "Sun",
+            "ref_frame": "ICRF",
+            "X": "19.2184461",
+            "Y": "-0.0000000",
+            "Z": "0.0000000",
+            "VX": "0.0000000",
+            "VY": "0.0068352",
+            "VZ": "0.0000000",
+            "datetime": "2025-Apr-12 00:00:00"
+          }
+        ]
+      }
+    }
+    {
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      },
+      "result": {
+        "vector": [
+          {
+            "target": "Jupiter",
+            "center": "Sun",
+            "ref_frame": "ICRF",
+            "X": "4.950429",
+            "Y": "-2.957123",
+            "Z": "-0.101234",
+            "VX": "0.001234",
+            "VY": "0.007890",
+            "VZ": "-0.000456",
+            "datetime": "2025-Apr-12 00:00:00"
+          }
+        ]
+      }
+    }
+    
