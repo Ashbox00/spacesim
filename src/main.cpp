@@ -1,6 +1,26 @@
 #include <raylib.h>
 #include <raymath.h>
+#include <iostream>
+
 #include "sphere.h"
+
+#include "downloader.hpp"
+
+#include "json_parser.hpp"
+
+#include <fstream>
+#include <sstream>
+#include <iostream>
+
+using namespace std;
+
+string readFileAsString(const string &filename)
+{
+    ifstream inFile(filename);
+    ostringstream ss;
+    ss << inFile.rdbuf();
+    return ss.str();
+}
 
 int main()
 {
@@ -31,9 +51,9 @@ int main()
             BeginMode3D(camera);
             {
                 // DrawSphere(Vector3Zero(), 3, GREEN);
-                //DrawSphereEx(Vector3Zero(), 3, 100, 100, YELLOW);
+                // DrawSphereEx(Vector3Zero(), 3, 100, 100, YELLOW);
 
-                for (auto& s : spheres)
+                for (auto &s : spheres)
                 {
                     DrawSphereEx(s.getCoords(), s.getRadius(), 100, 100, YELLOW);
                 }
