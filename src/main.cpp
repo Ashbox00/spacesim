@@ -20,7 +20,8 @@ using namespace std;
 PlanetStates states[NUM_STATES] = {};
 int last_state = 0;
 int current_state = 0;
-constexpr double STEP_TIME = 1.0f;
+constexpr double STEP_TIME = 0.001f;
+bool run_fast = false;
 
 int main()
 {
@@ -28,7 +29,7 @@ int main()
 
     InitWindow(1920, 1080, "Space Sim");
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
-    SetTargetFPS(120);
+    SetTargetFPS(60);
 
     HideCursor();
 
@@ -64,7 +65,23 @@ int main()
 
     while (!WindowShouldClose())
     {
-        current_state = (int)((uint64_t)(floor(GetTime())) % NUM_STATES);
+        run_fast = IsKeyDown(KEY_SPACE);
+        for (int i = 0; i < (run_fast ? 10000 : 1); i++)
+        {
+            current_state = (current_state + 1) % NUM_STATES; // = (int)((uint64_t)(floor(totalTime)) % NUM_STATES);
+
+            if (current_state != last_state)
+            {
+                int last_last_state = (last_state - 1 + NUM_STATES) % NUM_STATES;
+                // states[last_state].planets[0] = states[last_last_state].planets[0];
+                for (int i = 1; i < NUM_PLANETS; i++)
+                {
+                    states[last_state].planets[i] = satelliteStep(states[last_last_state], states[last_last_state].planets[i], STEP_TIME);
+                }
+
+                last_state = current_state;
+            }
+        }
 
         UpdateCamera(&camera, CAMERA_THIRD_PERSON);
         SetMousePosition(GetScreenWidth() / 2, GetScreenHeight() / 2);
@@ -77,27 +94,20 @@ int main()
             {
                 for (auto &p : states[current_state].planets)
                 {
+                    double radius_scale = 1.0 / 500;
+                    if (&p == &states[current_state].planets[0])
+                    {
+                        radius_scale /= 100;
+                    }
 
-                    DrawModel(circleModel, (Vector3)(p.position / 1e6), p.radius_km / 500, p.color);
+                    DrawModel(circleModel, (Vector3)(p.position / 1e6), radius_scale * p.radius_km, p.color);
                 }
             }
             EndMode3D();
 
-            DrawFPS(10, 10);
+            // DrawFPS(10, 10);
         }
         EndDrawing();
-
-        if (current_state != last_state)
-        {
-            int last_last_state = (last_state - 1 + NUM_STATES) % NUM_STATES;
-            // states[last_state].planets[0] = states[last_last_state].planets[0];
-            for (int i = 1; i < NUM_PLANETS; i++)
-            {
-                states[last_state].planets[i] = satelliteStep(states[last_last_state], states[last_last_state].planets[i], STEP_TIME);
-            }
-
-            last_state = current_state;
-        }
 
         totalTime += GetFrameTime();
     }

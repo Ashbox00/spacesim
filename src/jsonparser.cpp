@@ -24,6 +24,8 @@ void Jparser(const string &readBuffer)
                 double y = stod(string(vector["Y"]));
                 double z = stod(string(vector["Z"]));
 
+                swap(y, z);
+
                 double vx_km = stod(string(vector["VX"]));
                 double vy_km = stod(string(vector["VY"]));
                 double vz_km = stod(string(vector["VZ"]));
