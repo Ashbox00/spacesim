@@ -4,6 +4,7 @@
 int main()
 {
     InitWindow(640, 480, "Space Sim");
+    SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
 
     Camera3D camera = {
         .position = Vector3{0, 0, -5},
@@ -32,4 +33,6 @@ int main()
         }
         EndDrawing();
     }
+
+    CloseWindow();
 }
