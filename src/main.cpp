@@ -1,9 +1,23 @@
 #include <raylib.h>
 #include <raymath.h>
+#include <iostream>
+
+#include "planet.h"
+
+#include "downloader.hpp"
+
+#include "json_parser.hpp"
+
+#include <fstream>
+#include <sstream>
+#include <iostream>
+#include <array>
+
+using namespace std;
 
 int main()
 {
-    InitWindow(640, 480, "Space Sim");
+    InitWindow(1920, 1080, "Space Sim");
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
 
     Camera3D camera = {
@@ -13,6 +27,9 @@ int main()
         .fovy = 60.0f,
         .projection = CAMERA_PERSPECTIVE,
     };
+
+    Mesh circleMesh = GenMeshSphere(1.0f, 100, 100);
+    Model circleModel = LoadModelFromMesh(circleMesh);
 
     while (!WindowShouldClose())
     {
@@ -24,8 +41,10 @@ int main()
 
             BeginMode3D(camera);
             {
-                // DrawSphere(Vector3Zero(), 3, GREEN);
-                DrawSphereEx(Vector3Zero(), 3, 100, 100, YELLOW);
+                for (auto &p : planets)
+                {
+                    DrawModel(circleModel, p.position, p.radius_km / 100000, p.color);
+                }
             }
             EndMode3D();
 
@@ -33,6 +52,8 @@ int main()
         }
         EndDrawing();
     }
+
+    UnloadModel(circleModel); // Also unloads mesh
 
     CloseWindow();
 }
