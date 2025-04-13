@@ -9,6 +9,8 @@ using namespace std;
 
 int main()
 {
+    cout << download("https://cgwe.st/") << endl;
+
     InitWindow(640, 480, "Space Sim");
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
 
@@ -19,8 +21,6 @@ int main()
         .fovy = 60.0f,
         .projection = CAMERA_PERSPECTIVE,
     };
-
-    cout << download("https://cgwe.st/") << endl;
 
     while (!WindowShouldClose())
     {
