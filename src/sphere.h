@@ -19,8 +19,6 @@ public:
         z = zCoords;
     };
 
-
-
 private:
     double x, y, z = 0;
 };
