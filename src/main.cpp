@@ -7,6 +7,8 @@ int main()
     InitWindow(640, 480, "Space Sim");
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
     Sphere s;
+    
+    std::vector<float> coords;
 
     Camera3D camera = {
         .position = Vector3{0, 0, -5},
@@ -35,6 +37,11 @@ int main()
                 // DrawSphere(Vector3Zero(), 3, GREEN);
                 //DrawSphereEx(Vector3Zero(), 3, 100, 100, YELLOW);
                 DrawSphereEx(s.getCoords(), 3, 100, 100 ,YELLOW);
+
+                while (true)
+                {
+                    DrawSphereEx(s.getCoords(), s.getRadius(), 100, 100, YELLOW);
+                };
             }
             EndMode3D();
 
