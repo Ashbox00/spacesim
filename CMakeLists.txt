@@ -14,12 +14,17 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(raylib)
 
+set(HTTP_ONLY ON)
+set(BUILD_STATIC_CURL ON)
+set(BUILD_SHARED_LIBS OFF)
+
 FetchContent_Declare(
     libcurl
     GIT_REPOSITORY https://github.com/curl/curl
     GIT_TAG master
 )
 FetchContent_MakeAvailable(libcurl)
+
 
 include_directories(include)
 
