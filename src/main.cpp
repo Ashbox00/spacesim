@@ -28,7 +28,7 @@ int main()
 
     InitWindow(1920, 1080, "Space Sim");
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
-    // SetTargetFPS(120);
+    SetTargetFPS(120);
 
     HideCursor();
 
@@ -45,9 +45,6 @@ int main()
     ss << json_file.rdbuf();
 
     Jparser(ss.str());
-
-    int last_state = 0;
-    int current_state = 0;
 
     states[current_state] = initialState;
 
@@ -67,7 +64,7 @@ int main()
 
     while (!WindowShouldClose())
     {
-        current_state = (int)((uint64_t)(floor(1000 * GetTime())) % NUM_STATES);
+        current_state = (int)((uint64_t)(floor(GetTime())) % NUM_STATES);
 
         UpdateCamera(&camera, CAMERA_THIRD_PERSON);
         SetMousePosition(GetScreenWidth() / 2, GetScreenHeight() / 2);

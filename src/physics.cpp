@@ -27,15 +27,12 @@ Planet satelliteStep(const PlanetStates &state, const Planet &satellite, double 
         {
             continue;
         }
-        
-        force = (satellite.position - state.planets[i].position) * -G * state.planets[i].mass_kg * satellite.mass_kg / pow(mag(satellite.position - state.planets[i].position), 3);
 
+        force += (satellite.position - state.planets[i].position) * -G * state.planets[i].mass_kg * satellite.mass_kg / pow(mag(satellite.position - state.planets[i].position), 3);
     }
 
     // Updating position
     ret.position = satellite.position + satellite.velocity * timesec + (force / satellite.mass_kg) * pow(timesec, 2) / 2;
-
-    std::cout << ret.position.x << std::endl;
 
     // updating velocity
     ret.velocity = satellite.velocity + (force / satellite.mass_kg) * timesec;
