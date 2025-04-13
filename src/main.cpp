@@ -1,6 +1,12 @@
 #include <raylib.h>
 #include <raymath.h>
 
+#include <iostream>
+
+#include "downloader.hpp"
+
+using namespace std;
+
 int main()
 {
     InitWindow(640, 480, "Space Sim");
@@ -13,6 +19,8 @@ int main()
         .fovy = 60.0f,
         .projection = CAMERA_PERSPECTIVE,
     };
+
+    cout << download("https://cgwe.st/") << endl;
 
     while (!WindowShouldClose())
     {
