@@ -16,7 +16,7 @@ struct Planet
     Color color;
 };
 
-#define NUM_PLANETS (10)
+#define NUM_PLANETS (9) // The sun counts as a planet
 
 struct PlanetStates
 {

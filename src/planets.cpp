@@ -8,7 +8,12 @@ PlanetStates initialState = {
             .velocity = Vector3Zero(),
             .mass_kg = 1.989e30,
             .radius_km = 695700.0,
-            .color = YELLOW,
+            .color = Color{
+                .r = 252,
+                .g = 186,
+                .b = 3,
+                .a = 255,
+            },
         },
         Planet{
             .name = "Mercury",
@@ -16,7 +21,12 @@ PlanetStates initialState = {
             .velocity = Vector3Zero(),
             .mass_kg = 3.301e23,
             .radius_km = 2439.7,
-            .color = RAYWHITE,
+            .color = Color{
+                .r = 143,
+                .g = 143,
+                .b = 143,
+                .a = 255,
+            },
         },
         Planet{
             .name = "Venus",
@@ -24,7 +34,12 @@ PlanetStates initialState = {
             .velocity = Vector3Zero(),
             .mass_kg = 4.867e24,
             .radius_km = 6051.8,
-            .color = RED,
+            .color = Color{
+                .r = 252,
+                .g = 168,
+                .b = 58,
+                .a = 255,
+            },
         },
         Planet{
             .name = "Earth",
@@ -32,7 +47,12 @@ PlanetStates initialState = {
             .velocity = Vector3Zero(),
             .mass_kg = 5.972e24,
             .radius_km = 6371.0,
-            .color = GREEN,
+            .color = Color{
+                .r = 50,
+                .g = 168,
+                .b = 82,
+                .a = 255,
+            },
         },
         Planet{
             .name = "Mars",
@@ -40,7 +60,12 @@ PlanetStates initialState = {
             .velocity = Vector3Zero(),
             .mass_kg = 6.417e23,
             .radius_km = 3389.5,
-            .color = ORANGE,
+            .color = Color{
+                .r = 245,
+                .g = 144,
+                .b = 100,
+                .a = 255,
+            },
         },
         Planet{
             .name = "Jupiter",
@@ -48,7 +73,12 @@ PlanetStates initialState = {
             .velocity = Vector3Zero(),
             .mass_kg = 1.898e27,
             .radius_km = 69911.0,
-            .color = BROWN,
+            .color = Color{
+                .r = 247,
+                .g = 207,
+                .b = 146,
+                .a = 255,
+            },
         },
         Planet{
             .name = "Saturn",
@@ -56,7 +86,12 @@ PlanetStates initialState = {
             .velocity = Vector3Zero(),
             .mass_kg = 5.68e26,
             .radius_km = 60268.0,
-            .color = YELLOW,
+            .color = Color{
+                .r = 247,
+                .g = 220,
+                .b = 82,
+                .a = 255,
+            },
         },
         Planet{
             .name = "Uranus",
@@ -64,7 +99,12 @@ PlanetStates initialState = {
             .velocity = Vector3Zero(),
             .mass_kg = 8.682e25,
             .radius_km = 51118.0,
-            .color = BLUE,
+            .color = Color{
+                .r = 166,
+                .g = 243,
+                .b = 245,
+                .a = 255,
+            },
         },
         Planet{
             .name = "Neptune",
@@ -72,14 +112,11 @@ PlanetStates initialState = {
             .velocity = Vector3Zero(),
             .mass_kg = 1.024e26,
             .radius_km = 24764.0,
-            .color = PURPLE,
-        },
-        Planet{
-            .name = "Pluto",
-            .position = Vector3Zero(),
-            .velocity = Vector3Zero(),
-            .mass_kg = 1.31e22,
-            .radius_km = 2370.0,
-            .color = GOLD,
+            .color = Color{
+                .r = 35,
+                .g = 14,
+                .b = 173,
+                .a = 255,
+            },
         },
     }};

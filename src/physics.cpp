@@ -47,7 +47,9 @@ Planet satelliteStep(const PlanetStates &state, const Planet &satellite, double 
             continue;
         }
 
-        force += (G * state.planets[i].mass_kg * satellite.mass_kg) * (satellite.position - state.planets[i].position).invert();
+        force.x += (G * state.planets[i].mass_kg * satellite.mass_kg) / pow((satellite.position.x - state.planets[i].position.x), 2);
+        force.y += (G * state.planets[i].mass_kg * satellite.mass_kg) / pow((satellite.position.y - state.planets[i].position.y), 2);
+        force.z += (G * state.planets[i].mass_kg * satellite.mass_kg) / pow((satellite.position.z - state.planets[i].position.z), 2);
     }
 
     // Updating position
