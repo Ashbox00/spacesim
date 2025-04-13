@@ -400,5 +400,3 @@ build_files
 raylib-master
 Makefile
 /*.sln
-
-*.make

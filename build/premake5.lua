@@ -83,13 +83,12 @@ function platform_defines()
 -- to have CLOCK_MONOTOMIC
 -- See: https://github.com/raysan5/raylib/issues/2729
 
-    defines {"CURL_STATICLIB"}
+    filter{}
 end
 
 -- if you don't want to download raylib, then set this to false, and set the raylib dir to where you want raylib to be pulled from, must be full sources.
 downloadRaylib = true
 raylib_dir = "external/raylib-master"
-curl_dir = "external/curl"
 
 workspaceName = 'MyGame'
 baseName = path.getbasename(path.getdirectory(os.getcwd()));
@@ -162,20 +161,19 @@ if (downloadRaylib) then
             ["Source Files/*"] = {"../src/**.c", "src/**.cpp"},
         }
         files {"../src/**.c", "../src/**.cpp", "../src/**.h", "../src/**.hpp", "../include/**.h", "../include/**.hpp"}
-
-        
+    
         includedirs { "../src" }
         includedirs { "../include" }
 
-        links {"raylib", "curl-lib", "mbedtls-lib", "zip-lib", "zlib-lib" }
-        
+
+        links {"raylib", "curl"}
+
         cdialect "C17"
         cppdialect "C++17"
-        
+
         includedirs {raylib_dir .. "/src" }
         includedirs {raylib_dir .."/src/external" }
         includedirs { raylib_dir .."/src/external/glfw/include" }
-        includedirs { curl_dir .. "/include" }
         flags { "ShadowedVariables"}
         platform_defines()
 
@@ -198,12 +196,6 @@ if (downloadRaylib) then
             links {"OpenGL.framework", "Cocoa.framework", "IOKit.framework", "CoreFoundation.framework", "CoreAudio.framework", "CoreVideo.framework", "AudioToolbox.framework"}
 
         filter{}
-
-
-        include "/external/curl/" 
-        include "/external/mbedtls/" 
-        include "/external/libzip/"
-        include "/external/zlib/"  
 		
 
     project "raylib"
