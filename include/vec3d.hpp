@@ -5,28 +5,28 @@
 class vec3d
 {
 public:
-    vec3d()
+    inline vec3d()
         : x(0), y(0), z(0)
     {
     }
 
-    vec3d(double x, double y, double z)
-        : x(x), y(y), z(z)
+    inline vec3d(double _x, double _y, double _z)
+        : x(_x), y(_y), z(_z)
     {
     }
 
-    vec3d(Vector3 vec3)
+    inline vec3d(Vector3 vec3)
         : x(vec3.x), y(vec3.y), z(vec3.z)
     {
     }
 
 public:
-    vec3d operator+(const vec3d &other)
+    inline vec3d operator+(const vec3d &other)
     {
         return vec3d(x + other.x, y + other.y, z + other.z);
     }
 
-    vec3d &operator+=(const vec3d &other)
+    inline vec3d &operator+=(const vec3d &other)
     {
         x += other.x;
         y += other.y;
@@ -34,17 +34,17 @@ public:
         return *this;
     }
 
-    vec3d operator-()
+    inline vec3d operator-()
     {
         return vec3d(x, y, z);
     }
 
-    vec3d operator-(const vec3d &other)
+    inline vec3d operator-(const vec3d &other)
     {
         return vec3d(x - other.x, y - other.y, z - other.z);
     }
 
-    vec3d operator-=(const vec3d &other)
+    inline vec3d operator-=(const vec3d &other)
     {
         x -= other.x;
         y -= other.y;
@@ -52,12 +52,12 @@ public:
         return *this;
     }
 
-    vec3d operator*(double scale)
+    inline vec3d operator*(double scale)
     {
         return vec3d(x * scale, y * scale, z * scale);
     }
 
-    vec3d &operator*=(double scale)
+    inline vec3d &operator*=(double scale)
     {
         x *= scale;
         y *= scale;
@@ -65,12 +65,12 @@ public:
         return *this;
     }
 
-    vec3d operator/(double scale)
+    inline vec3d operator/(double scale)
     {
         return vec3d(x / scale, y / scale, z / scale);
     }
 
-    vec3d &operator/=(double scale)
+    inline vec3d &operator/=(double scale)
     {
         x /= scale;
         y /= scale;
@@ -78,7 +78,7 @@ public:
         return *this;
     }
 
-    operator Vector3() const
+    inline operator Vector3() const
     {
         return Vector3{
             .x = (float)x,
@@ -87,7 +87,7 @@ public:
         };
     }
 
-    vec3d invert()
+    inline vec3d invert()
     {
         return vec3d(1.0 / x, 1.0 / y, 1.0 / z);
     }
@@ -98,17 +98,17 @@ public:
     double z;
 };
 
-vec3d operator*(double scale, const vec3d &vec)
+inline vec3d operator*(double scale, const vec3d &vec)
 {
     return vec * scale;
 }
 
-vec3d operator+(const vec3d &lhs, const vec3d &rhs)
+inline vec3d operator+(const vec3d &lhs, const vec3d &rhs)
 {
     return vec3d(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
 }
 
-vec3d operator-(const vec3d &lhs, const vec3d &rhs)
+inline vec3d operator-(const vec3d &lhs, const vec3d &rhs)
 {
     return vec3d(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
 }

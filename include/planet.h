@@ -15,3 +15,6 @@ struct Planet
     double radius_km;
     Color color;
 };
+
+#define NUM_PLANETS (10)
+extern Planet planets[NUM_PLANETS];
