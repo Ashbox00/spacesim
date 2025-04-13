@@ -1,18 +1,15 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-//Gonna see if I can test it here?
+//raylib magic
 #include <raylib.h>
 #include <raymath.h>
 #include <vector>
 
-//class that creates a general 3d sphere shape for celestial bodies
-//data we are grabbing: position and velocity
-//draw sphere based on the object utilizng vectors from the provided information above
-
 class Sphere 
 {
 public:
+    //basic constructor
     Sphere()
     {
         x = 0;
@@ -31,34 +28,16 @@ public:
         };
     };
 
-    float getX()
+    float getCoords()
     {
-        return vec.x;
+        return vec.x, vec.y, vec.z;
     };
 
-    void setX(float coord)
+    void setCoords(float xCoords, float yCoords, float zCoords)
     {
-        vec.x = coord;
-    };
-
-    float getY()
-    {
-        return vec.y;
-    };
-
-    void setY(float coord)
-    {
-        vec.y = coord;
-    };
-
-    float getZ()
-    {
-        return vec.z;
-    };
-
-    void setZ(float coord)
-    {
-        vec.z = coord;
+        vec.x = xCoords;
+        vec.y = yCoords;
+        vec.z = zCoords;
     };
 
 private:
