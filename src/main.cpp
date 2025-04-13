@@ -6,10 +6,24 @@
 
 #include "downloader.hpp"
 
+#include "json_parser.hpp"
+
+#include <fstream>
+#include <sstream>
+#include <iostream>
+
+using namespace std;
+
+string readFileAsString(const string &filename)
+{
+    ifstream inFile(filename);
+    ostringstream ss;
+    ss << inFile.rdbuf();
+    return ss.str();
+}
+
 int main()
 {
-    std::cout << download("cgwe.st") << std::endl;
-
     InitWindow(640, 480, "Space Sim");
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
     std::vector<Sphere> spheres;
