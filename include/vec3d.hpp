@@ -102,6 +102,11 @@ public:
     double z;
 };
 
+inline double mag(const vec3d &vec)
+{
+    return sqrt(vec.x*vec.x + vec.y*vec.y + vec.z*vec.z);
+}
+
 inline vec3d operator*(double scale, const vec3d &vec)
 {
     return vec * scale;

@@ -2,7 +2,7 @@
 #include <raylib.h>
 #include <raymath.h>
 #include <cmath>
-
+#include <iostream>
 #include "planet.h"
 #include "vec3d.hpp"
 
@@ -21,23 +21,24 @@ Planet satelliteStep(const PlanetStates &state, const Planet &satellite, double 
 
     vec3d force(0, 0, 0);
 
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < NUM_PLANETS; i++)
     {
         if (&satellite == &state.planets[i])
         {
             continue;
         }
+        
+        force = (satellite.position - state.planets[i].position) * -G * state.planets[i].mass_kg * satellite.mass_kg / pow(mag(satellite.position - state.planets[i].position), 3);
 
-        force.x += (G * state.planets[i].mass_kg * satellite.mass_kg) / pow((satellite.position.x - state.planets[i].position.x), 2);
-        force.y += (G * state.planets[i].mass_kg * satellite.mass_kg) / pow((satellite.position.y - state.planets[i].position.y), 2);
-        force.z += (G * state.planets[i].mass_kg * satellite.mass_kg) / pow((satellite.position.z - state.planets[i].position.z), 2);
     }
 
     // Updating position
-    ret.position = satellite.position + satellite.velocity * timesec + force / satellite.mass_kg * pow(timesec, 2) / 2;
+    ret.position = satellite.position + satellite.velocity * timesec + (force / satellite.mass_kg) * pow(timesec, 2) / 2;
+
+    std::cout << ret.position.x << std::endl;
 
     // updating velocity
-    ret.velocity = satellite.velocity + force / satellite.mass_kg * timesec;
+    ret.velocity = satellite.velocity + (force / satellite.mass_kg) * timesec;
 
     return ret;
 }

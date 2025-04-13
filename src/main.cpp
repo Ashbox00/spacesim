@@ -20,7 +20,7 @@ using namespace std;
 PlanetStates states[NUM_STATES] = {};
 int last_state = 0;
 int current_state = 0;
-constexpr double STEP_TIME = 0.1f;
+constexpr double STEP_TIME = 1.0f;
 
 std::string url = "https://ssd.jpl.nasa.gov/api/horizons.api?format=json"
                   "&COMMAND='399'"
@@ -36,7 +36,7 @@ int main()
 
     InitWindow(1920, 1080, "Space Sim");
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
-    SetTargetFPS(120);
+    // SetTargetFPS(120);
 
     HideCursor();
 
@@ -70,7 +70,7 @@ int main()
 
     while (!WindowShouldClose())
     {
-        current_state = (int)((uint64_t)(floor(10 * GetTime())) % NUM_STATES);
+        current_state = (int)((uint64_t)(floor(1000 * GetTime())) % NUM_STATES);
 
         UpdateCamera(&camera, CAMERA_THIRD_PERSON);
         SetMousePosition(GetScreenWidth() / 2, GetScreenHeight() / 2);
@@ -83,8 +83,6 @@ int main()
             {
                 for (auto &p : states[current_state].planets)
                 {
-                    // if (&p == &states[current_state].planets[0])
-                    //     continue;
 
                     DrawModel(circleModel, (Vector3)(p.position / 1e6), p.radius_km / 500, p.color);
                 }
