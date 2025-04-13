@@ -1,8 +1,28 @@
 #include <raylib.h>
 #include <raymath.h>
 
+#include "json_parser.hpp"
+
+#include <fstream>
+#include <sstream>
+
+using namespace std;
+
+string readFileAsString(const string &filename)
+{
+    ifstream inFile(filename);
+    ostringstream ss;
+    ss << inFile.rdbuf();
+    return ss.str();
+}
+
 int main()
 {
+    string json = readFileAsString("test.json");
+    Jparser(json);
+
+    return 0;
+
     InitWindow(640, 480, "Space Sim");
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
 
