@@ -22,6 +22,7 @@ static Planet planets[] = {
         .velocity = Vector3Zero(),
         .mass_kg = 1.989e30f,
         .radius_km = 695700.0f,
+        .color = YELLOW,
     },
     Planet{
         .name = "Mercury",
@@ -29,6 +30,7 @@ static Planet planets[] = {
         .velocity = Vector3Zero(),
         .mass_kg = 3.301e23f,
         .radius_km = 2439.7,
+        .color = RAYWHITE,
     },
     Planet{
         .name = "Venus",
@@ -36,6 +38,7 @@ static Planet planets[] = {
         .velocity = Vector3Zero(),
         .mass_kg = 4.867e24f,
         .radius_km = 6051.8f,
+        .color = RED,
     },
     Planet{
         .name = "Earth",
@@ -43,6 +46,7 @@ static Planet planets[] = {
         .velocity = Vector3Zero(),
         .mass_kg = 5.972e24f,
         .radius_km = 6371.0f,
+        .color = GREEN,
     },
     Planet{
         .name = "Mars",
@@ -50,6 +54,7 @@ static Planet planets[] = {
         .velocity = Vector3Zero(),
         .mass_kg = 6.417e23f,
         .radius_km = 3389.5f,
+        .color = ORANGE,
     },
     Planet{
         .name = "Jupiter",
@@ -57,6 +62,7 @@ static Planet planets[] = {
         .velocity = Vector3Zero(),
         .mass_kg = 1.898e27f,
         .radius_km = 69911.0f,
+        .color = BROWN,
     },
     Planet{
         .name = "Saturn",
@@ -64,6 +70,7 @@ static Planet planets[] = {
         .velocity = Vector3Zero(),
         .mass_kg = 5.68e26f,
         .radius_km = 60268.0f,
+        .color = YELLOW,
     },
     Planet{
         .name = "Uranus",
@@ -71,6 +78,7 @@ static Planet planets[] = {
         .velocity = Vector3Zero(),
         .mass_kg = 8.682e25f,
         .radius_km = 51118.0f,
+        .color = BLUE,
     },
     Planet{
         .name = "Neptune",
@@ -78,6 +86,7 @@ static Planet planets[] = {
         .velocity = Vector3Zero(),
         .mass_kg = 1.024e26f,
         .radius_km = 24764.0f,
+        .color = PURPLE,
     },
     Planet{
         .name = "Pluto",
@@ -85,12 +94,13 @@ static Planet planets[] = {
         .velocity = Vector3Zero(),
         .mass_kg = 1.31e22f,
         .radius_km = 2370.0f,
+        .color = GOLD,
     },
 };
 
 int main()
 {
-    InitWindow(640, 480, "Space Sim");
+    InitWindow(1920, 1080, "Space Sim");
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
 
     Camera3D camera = {
@@ -100,15 +110,6 @@ int main()
         .fovy = 60.0f,
         .projection = CAMERA_PERSPECTIVE,
     };
-
-    for (auto &p : planets)
-    {
-        p.position = Vector3{
-            .x = (float)GetRandomValue(-100, 100),
-            .y = (float)GetRandomValue(-100, 100),
-            .z = (float)GetRandomValue(-100, 100),
-        };
-    }
 
     while (!WindowShouldClose())
     {
@@ -122,7 +123,7 @@ int main()
             {
                 for (auto &p : planets)
                 {
-                    DrawSphereEx(p.position, p.radius_km / 10000, 100, 100, YELLOW);
+                    DrawSphereEx(p.position, p.radius_km / 100000, 100, 100, p.color);
                 }
             }
             EndMode3D();
