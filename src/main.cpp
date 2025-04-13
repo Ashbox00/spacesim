@@ -28,6 +28,9 @@ int main()
         .projection = CAMERA_PERSPECTIVE,
     };
 
+    Mesh circleMesh = GenMeshSphere(1.0f, 100, 100);
+    Model circleModel = LoadModelFromMesh(circleMesh);
+
     while (!WindowShouldClose())
     {
         UpdateCamera(&camera, CAMERA_THIRD_PERSON);
@@ -40,7 +43,7 @@ int main()
             {
                 for (auto &p : planets)
                 {
-                    DrawSphereEx(p.position, p.radius_km / 100000, 100, 100, p.color);
+                    DrawModel(circleModel, p.position, p.radius_km / 100000, p.color);
                 }
             }
             EndMode3D();
@@ -49,6 +52,8 @@ int main()
         }
         EndDrawing();
     }
+
+    UnloadModel(circleModel); // Also unloads mesh
 
     CloseWindow();
 }
