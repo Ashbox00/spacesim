@@ -8,25 +8,6 @@
 
 const double G = 6.67430e-13;
 
-// void updatePlanets(double timesec)
-// {
-//     Planet sun = planets[0];
-
-//     for (int i = 1; i < NUM_PLANETS; i++)
-//     {
-//         // Getting the x, y, and z components of the force
-
-//         // float Fx = G*sun.mass_kg*planets[i].mass_kg / planets[i].position.x; for single components
-//         vec3d force = (G * sun.mass_kg * planets[i].mass_kg) * planets[i].position.invert();
-
-//         // Updating position
-//         planets[i].position += planets[i].velocity * timesec + force / planets[i].mass_kg * pow(timesec, 2) / 2;
-
-//         // updating velocity
-//         planets[i].velocity += force / planets[i].mass_kg * timesec;
-//     }
-// }
-
 Planet satelliteStep(const PlanetStates &state, const Planet &satellite, double timesec)
 {
     Planet ret = {

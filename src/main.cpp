@@ -36,6 +36,9 @@ int main()
 
     InitWindow(1920, 1080, "Space Sim");
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
+    SetTargetFPS(120);
+
+    HideCursor();
 
     Camera3D camera = {
         .position = Vector3{0, 0, -50},
@@ -62,16 +65,15 @@ int main()
         }
     }
 
-    printf("%lf\n", states[current_state].planets[1].radius_km);
-
     Mesh circleMesh = GenMeshSphere(1.0f, 100, 100);
     Model circleModel = LoadModelFromMesh(circleMesh);
 
     while (!WindowShouldClose())
     {
-        current_state = (int)((uint64_t)(floor(GetTime())) % NUM_STATES);
+        current_state = 0; //(int)((uint64_t)(floor(GetTime())) % NUM_STATES);
 
-        UpdateCamera(&camera, CAMERA_THIRD_PERSON);
+        UpdateCamera(&camera, CAMERA_FIRST_PERSON);
+        SetMousePosition(GetScreenWidth() / 2, GetScreenHeight() / 2);
 
         BeginDrawing();
         {
