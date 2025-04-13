@@ -17,7 +17,7 @@ public:
         z = 0;
     };
 
-    Sphere(float xVel, float yVel, float zVel)
+    Sphere(double xVel, double yVel, double zVel)
     {
         vel = Vector3
         {
@@ -55,7 +55,7 @@ public:
         return vel;
     };
 
-    void setVelocity(float xVel, float yVel, float zVel)
+    void setVelocity(double xVel, double yVel, double zVel)
     {
         vel.x = xVel;
         vel.y = yVel;

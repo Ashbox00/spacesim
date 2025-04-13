@@ -1,11 +1,13 @@
 #include <raylib.h>
 #include <raymath.h>
 #include "sphere.h"
+#include <iostream>
 
 int main()
 {
     InitWindow(640, 480, "Space Sim");
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
+    char inputQ;
     Sphere s;
     
     std::vector<float> coords;
@@ -16,12 +18,6 @@ int main()
         .up = Vector3{0, 1, 0},
         .fovy = 60.0f,
         .projection = CAMERA_PERSPECTIVE,
-
-        /*.position = s.getCoords(),
-        .target = s.getCoords(),
-        .up = s.getCoords(),
-        .fovy = 60.0f,
-        .projection = CAMERA_PERSPECTIVE,*/
     };
 
     while (!WindowShouldClose())
@@ -40,6 +36,14 @@ int main()
 
                 while (true)
                 {
+                    std::cout << "q to quit: ";
+                    std::cin >> inputQ;
+
+                    if(inputQ == 'q')
+                    {
+                        break;
+                    }
+
                     DrawSphereEx(s.getCoords(), s.getRadius(), 100, 100, YELLOW);
                 };
             }
