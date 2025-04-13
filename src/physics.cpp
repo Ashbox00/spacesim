@@ -3,54 +3,47 @@
 #include <raymath.h>
 #include <cmath>
 
-const float G = 6.67e-11f;
+#include "planet.h"
+#include "vec3d.hpp"
 
-class Planet{
-    public:
-    float mass;
-    float radius;
-    Vector3 pos;
-    Vector3 vel;
-    
-};
+const double G = 6.67430e-11;
 
-
-Planet* updatePlanets(Planet planets[], float timesec)
+Planet *updatePlanets(Planet planets[], double timesec)
 {
     Planet sun = planets[0];
-    //placeholder gravatational constant(the real one is too small)
+    // placeholder gravatational constant(the real one is too small)
 
     for (int i = 1; i < sizeof(planets); i++)
     {
-        //Getting the x, y, and z components of the force
-        
-        //float Fx = G*sun.mass*planets[i].mass / planets[i].pos.x; for single components
-        Vector3 force = Vector3Scale(Vector3Invert(planets[i].pos), (G*sun.mass)*planets[i].mass);
-        
-        //Updating position
-        planets[i].pos += planets[i].vel*timesec + force/planets[i].mass*pow(timesec, 2)/2;
+        // Getting the x, y, and z components of the force
 
-        //updating velocity
-        planets[i].vel += force/planets[i].mass * timesec;
+        // float Fx = G*sun.mass_kg*planets[i].mass_kg / planets[i].position.x; for single components
+        vec3d force = (G * sun.mass_kg * planets[i].mass_kg) * planets[i].position.invert();
+
+        // Updating position
+        planets[i].position += planets[i].velocity * timesec + force / planets[i].mass_kg * pow(timesec, 2) / 2;
+
+        // updating velocity
+        planets[i].velocity += force / planets[i].mass_kg * timesec;
     }
 
     return planets;
 }
 
-Planet satelliteStep(Planet planets[], Planet &satellite, float timesec)
+Planet satelliteStep(Planet planets[], Planet &satellite, double timesec)
 {
-    Vector3 force = {0,0,0};
+    vec3d force(0, 0, 0);
 
-    for(int i = 0; i < sizeof(planets); i++)
+    for (int i = 0; i < sizeof(planets); i++)
     {
-        force += Vector3Scale(Vector3Invert(satellite.pos - planets[i].pos), (G*planets[i].mass)*satellite.mass);
+        force += (G * planets[i].mass_kg * satellite.mass_kg) * (satellite.position - planets[i].position).invert();
     }
-    
-    //Updating position
-    satellite.pos += satellite.vel*timesec + force/satellite.mass*pow(timesec, 2)/2;
 
-    //updating velocity
-    satellite.vel += force/satellite.mass * timesec;
+    // Updating position
+    satellite.position += satellite.velocity * timesec + force / satellite.mass_kg * pow(timesec, 2) / 2;
+
+    // updating velocity
+    satellite.velocity += force / satellite.mass_kg * timesec;
 
     return satellite;
 }
