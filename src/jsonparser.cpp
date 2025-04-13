@@ -23,6 +23,10 @@ void Jparser(const string &readBuffer)
             cout << "Y: " << coords["Y"] << endl;
             cout << "Z: " << coords["Z"] << endl;
 
+            double vx = stod(string(coords["X"])) * 100;
+            double vy = stod(string(coords["Y"])) * 100;
+            double vz = stod(string(coords["Z"])) * 100;
+
             cout << "Velocity" << endl;
             double vx_km = stod(string(coords["VX"])) * 1731.46;
             double vy_km = stod(string(coords["VY"])) * 1731.46;
