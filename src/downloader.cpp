@@ -10,6 +10,8 @@ static void write_data(char *ptr, size_t size, size_t nmemb, void *userdata)
 {
     std::string *output = (std::string *)userdata;
 
+    output->reserve(output->size() + nmemb);
+
     for (size_t i = 0; i < nmemb; i++)
     {
         output->push_back(ptr[i]);
