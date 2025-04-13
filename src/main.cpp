@@ -11,6 +11,7 @@
 #include <sstream>
 #include <iostream>
 #include <array>
+#include <sstream>
 #include <cstdint>
 
 using namespace std;
@@ -19,16 +20,7 @@ using namespace std;
 PlanetStates states[NUM_STATES] = {};
 int last_state = 0;
 int current_state = 0;
-constexpr double STEP_TIME = 1.0f;
-
-vec3d randomPos()
-{
-    double x = 1e10 * ((double)rand() / (double)RAND_MAX) - 5e9;
-    double y = 1e10 * ((double)rand() / (double)RAND_MAX) - 5e9;
-    double z = 1e10 * ((double)rand() / (double)RAND_MAX) - 5e9;
-
-    return vec3d(x, y, z);
-}
+constexpr double STEP_TIME = 0.0001f;
 
 std::string url = "https://ssd.jpl.nasa.gov/api/horizons.api?format=json"
                   "&COMMAND='399'"
@@ -53,13 +45,13 @@ int main()
         .projection = CAMERA_PERSPECTIVE,
     };
 
-    states[current_state] = initialState;
+    ifstream json_file("test.json");
+    stringstream ss;
+    ss << json_file.rdbuf();
 
-    for (int i = 1; i < NUM_PLANETS; i++)
-    {
-        states[current_state].planets[i].position = randomPos();
-        states[current_state].planets[i].velocity = {0, 0, 0};
-    }
+    Jparser(ss.str());
+
+    states[current_state] = initialState;
 
     for (int i = 1; i < NUM_STATES; i++)
     {
@@ -70,12 +62,14 @@ int main()
         }
     }
 
+    printf("%lf\n", states[current_state].planets[1].radius_km);
+
     Mesh circleMesh = GenMeshSphere(1.0f, 100, 100);
     Model circleModel = LoadModelFromMesh(circleMesh);
 
     while (!WindowShouldClose())
     {
-        current_state = (int)((uint64_t)(floor(100.0f * GetTime() / STEP_TIME)) % NUM_STATES);
+        current_state = (int)((uint64_t)(floor(GetTime())) % NUM_STATES);
 
         UpdateCamera(&camera, CAMERA_THIRD_PERSON);
 
@@ -87,7 +81,10 @@ int main()
             {
                 for (auto &p : states[current_state].planets)
                 {
-                    DrawModel(circleModel, (Vector3)p.position / 1e8, p.radius_km / 10000, p.color);
+                    // if (&p == &states[current_state].planets[0])
+                    //     continue;
+
+                    DrawModel(circleModel, (Vector3)(p.position / 1e7), p.radius_km / 1000, p.color);
                 }
             }
             EndMode3D();
@@ -104,8 +101,6 @@ int main()
             {
                 states[last_state].planets[i] = satelliteStep(states[last_last_state], states[last_last_state].planets[i], STEP_TIME);
             }
-
-            // printf("%lf\n", states[current_state].planets[0].position.x);
 
             last_state = current_state;
         }
