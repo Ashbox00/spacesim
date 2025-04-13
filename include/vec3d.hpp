@@ -98,6 +98,11 @@ public:
     double z;
 };
 
+vec3d operator*(double scale, const vec3d &vec)
+{
+    return vec * scale;
+}
+
 vec3d operator+(const vec3d &lhs, const vec3d &rhs)
 {
     return vec3d(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
