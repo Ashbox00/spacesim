@@ -9,18 +9,24 @@
 //data we are grabbing: position and velocity
 //draw sphere based on the object utilizng vectors from the provided information above
 
-class Sphere {
+class Sphere 
+{
 public:
     Sphere();
 
-    Sphere(double xCoords, double yCoords, double zCoords) {
-        x = xCoords;
-        y = yCoords;
-        z = zCoords;
+    Sphere(float xCoords, float yCoords, float zCoords) 
+    {
+        vec = Vector3
+        {
+            x = xCoords,
+            y = yCoords,
+            z = zCoords,
+        };
     };
 
 private:
-    double x, y, z = 0;
+float x, y, z = 0;
+    Vector3 vec;
 };
 
 #endif
