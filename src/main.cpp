@@ -18,17 +18,7 @@ using namespace std;
 
 #define NUM_STATES (100)
 PlanetStates states[NUM_STATES] = {};
-int last_state = 0;
-int current_state = 0;
 constexpr double STEP_TIME = 0.1f;
-
-std::string url = "https://ssd.jpl.nasa.gov/api/horizons.api?format=json"
-                  "&COMMAND='399'"
-                  "&EPHEM_TYPE=VECTORS"
-                  "&CENTER='500@0'"
-                  "&START_TIME='2025-04-12'"
-                  "&STOP_TIME='2025-04-13'"
-                  "&STEP_SIZE='1 d'";
 
 int main()
 {
@@ -54,6 +44,9 @@ int main()
 
     Jparser(ss.str());
 
+    int last_state = 0;
+    int current_state = 0;
+
     states[current_state] = initialState;
 
     for (int i = 1; i < NUM_STATES; i++)
@@ -68,9 +61,11 @@ int main()
     Mesh circleMesh = GenMeshSphere(1.0f, 100, 100);
     Model circleModel = LoadModelFromMesh(circleMesh);
 
+    double totalTime = 0;
+
     while (!WindowShouldClose())
     {
-        current_state = (int)((uint64_t)(floor(10 * GetTime())) % NUM_STATES);
+        current_state = (int)((uint64_t)(floor(10 * totalTime)) % NUM_STATES);
 
         UpdateCamera(&camera, CAMERA_THIRD_PERSON);
         SetMousePosition(GetScreenWidth() / 2, GetScreenHeight() / 2);
@@ -106,6 +101,8 @@ int main()
 
             last_state = current_state;
         }
+
+        totalTime += GetFrameTime();
     }
 
     UnloadModel(circleModel); // Also unloads mesh
