@@ -17,6 +17,16 @@ public:
         z = 0;
     };
 
+    Sphere(float xVel, float yVel, float zVel)
+    {
+        vel = Vector3
+        {
+            x = xVel,
+            y = yVel,
+            z = zVel,
+        };
+    }
+
     Sphere(float xCoords, float yCoords, float zCoords) 
     {
         vec = Vector3
@@ -28,9 +38,9 @@ public:
         };
     };
 
-    float getCoords()
+    Vector3 getCoords()
     {
-        return vec.x, vec.y, vec.z;
+        return vec;
     };
 
     void setCoords(float xCoords, float yCoords, float zCoords)
@@ -40,9 +50,21 @@ public:
         vec.z = zCoords;
     };
 
+    Vector3 getVelocity()
+    {
+        return vel;
+    };
+
+    void setVelocity(float xVel, float yVel, float zVel)
+    {
+        vel.x = xVel;
+        vel.y = yVel;
+        vel.z = zVel;
+    }
+
 private:
-    float x, y, z;
-    Vector3 vec;
+    float x, y, z, mass, radius;
+    Vector3 vel, vec;
     std::vector<float> coords;
 };
 
