@@ -6,7 +6,7 @@
 #include "planet.h"
 #include "vec3d.hpp"
 
-const double G = 6.67430e-11;
+const double G = 6.67430e-13;
 
 // void updatePlanets(double timesec)
 // {
