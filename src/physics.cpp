@@ -21,7 +21,7 @@ Planet satelliteStep(const PlanetStates &state, const Planet &satellite, double 
 
     vec3d force(0, 0, 0);
 
-    for (int i = 0; i < NUM_PLANETS; i++)
+    for (int i = 0; i < 1; i++)
     {
         if (&satellite == &state.planets[i])
         {
