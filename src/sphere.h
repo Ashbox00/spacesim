@@ -19,39 +19,20 @@ public:
         z = 0;
         radius = 1;
     };
-/*
-    Sphere(double xVel, double yVel, double zVel)
-    {
-        vel = Vector3
-        {
-            x = xVel,
-            y = yVel,
-            z = zVel,
-        };
-    }
-*/
-    Sphere(float xCoords, float yCoords, float zCoords) 
-    {
-        vec = Vector3
-        {
-            //is this supposed to be xCoords, yCoord, zCoords instead of storing them?
-            x = xCoords,
-            y = yCoords,
-            z = zCoords,
-        };
-        radius = 1;
-    };
 
     Vector3 getCoords()
     {
-        return vec;
+        return pos;
     };
 
     void setCoords(float xCoords, float yCoords, float zCoords)
     {
-        vec.x = xCoords;
-        vec.y = yCoords;
-        vec.z = zCoords;
+        pos = Vector3
+        {
+            pos.x = xCoords,
+            pos.y = yCoords,
+            pos.z = zCoords,
+        };
     };
 
     Vector3 getVelocity()
@@ -61,10 +42,13 @@ public:
 
     void setVelocity(double xVel, double yVel, double zVel)
     {
-        vel.x = xVel;
-        vel.y = yVel;
-        vel.z = zVel;
-    }
+        vel = Vector3
+        {
+            vel.x = xVel,
+            vel.y = yVel,
+            vel.z = zVel,
+        };
+    };
 
     float getRadius()
     {
@@ -88,7 +72,7 @@ public:
 
 private:
     float x, y, z, mass, radius;
-    Vector3 vel, vec;
+    Vector3 vel, pos;
 };
 
 #endif
