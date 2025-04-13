@@ -21,6 +21,8 @@
 		"exception": "cpp",
 		"stdexcept": "cpp",
 		"cstdint": "cpp",
-		"iostream": "cpp"
+		"iostream": "cpp",
+		"ostream": "cpp",
+		"sstream": "cpp"
 	}
 }
