@@ -9,6 +9,8 @@ int main()
     std::vector<Sphere> spheres;
 
     spheres.push_back(Sphere(0, 0, 0));
+    spheres.push_back(Sphere(3, 1, 1));
+    spheres.push_back(Sphere(5, 4, 4));
 
     Camera3D camera = {
         .position = Vector3{0, 0, -5},
